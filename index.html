@@ -1,0 +1,518 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Scrapbook for Anurag ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #fffaf0;
+  --ink: #51463f;
+  --pink: #e9b9bd;
+  --lavender: #d9c9e9;
+  --muted: #9c8980;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 25px 14px 50px;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  background-color: #e8dfe5;
+  background-image: radial-gradient(#fff9 1px, transparent 1px);
+  background-size: 18px 18px;
+  overflow-x: hidden;
+}
+
+button { font-family: inherit; cursor: pointer; }
+
+.scrapbook {
+  max-width: 510px;
+  margin: 0 auto;
+  background: var(--paper);
+  padding: 25px 23px;
+  position: relative;
+  box-shadow: 0 12px 40px #58434a25;
+  transform: rotate(-0.4deg);
+  min-height: 600px;
+}
+
+.scrapbook:before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px dashed #d8b9ad;
+  pointer-events: none;
+}
+
+.tape {
+  position: absolute;
+  top: -9px;
+  left: 40%;
+  width: 100px;
+  height: 24px;
+  background: #e9c4c5;
+  opacity: .8;
+  transform: rotate(-4deg);
+}
+
+.page {
+  display: none;
+  position: relative;
+  z-index: 1;
+  animation: pageIn .55s ease both;
+}
+
+.page.active { display: block; }
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.small-label {
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #a68d87;
+  text-transform: uppercase;
+  margin: 18px 0 28px;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 36px;
+  text-align: center;
+  line-height: 1.3;
+  color: #886d82;
+  margin: 15px 0;
+}
+
+h2 { font-size: 25px; color: #886d82; }
+
+.script {
+  font-family: 'Caveat', cursive;
+  font-size: 29px;
+  line-height: 1.35;
+}
+
+.center { text-align: center; }
+
+.flower {
+  text-align: center;
+  font-size: 48px;
+  margin: 35px 0 20px;
+}
+
+.sticker {
+  display: inline-block;
+  background: #f5dce0;
+  padding: 7px 13px;
+  transform: rotate(-3deg);
+  font-family: 'Caveat', cursive;
+  font-size: 21px;
+}
+
+.note {
+  background: #fff4df;
+  padding: 19px;
+  margin: 23px 3px;
+  box-shadow: 2px 4px 8px #6c51431c;
+  transform: rotate(.7deg);
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.note.pink { background: #f8e5e5; transform: rotate(-1deg); }
+.note.lilac { background: #eee7f6; transform: rotate(.6deg); }
+
+.polaroid {
+  background: white;
+  padding: 12px 12px 38px;
+  max-width: 225px;
+  margin: 25px auto;
+  box-shadow: 0 5px 15px #4a35401c;
+  transform: rotate(2deg);
+  text-align: center;
+}
+
+.polaroid-art {
+  height: 150px;
+  background: linear-gradient(140deg,#f5dfe4,#e5d9ef,#f9ead9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 56px;
+}
+
+.polaroid span {
+  display: block;
+  font-family: 'Caveat', cursive;
+  font-size: 23px;
+  margin-top: 8px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: #a78aa7;
+  color: white;
+  padding: 14px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 12px 0;
+  transition: .2s;
+}
+
+.btn:hover { transform: translateY(-2px); background: #91718f; }
+.btn.light { background: #e8c9ce; color: #634f56; }
+.btn.outline { background: transparent; color: #8b7286; border: 1px solid #c9aebe; }
+
+.handwritten {
+  font-family: 'Caveat', cursive;
+  font-size: 25px;
+  line-height: 1.5;
+}
+
+.letter {
+  background: #fffdf7;
+  border: 1px solid #eadfd0;
+  padding: 21px 18px;
+  line-height: 1.9;
+  font-size: 14px;
+  margin: 18px 0;
+  box-shadow: 0 4px 12px #705d4210;
+}
+
+.letter p { margin: 0 0 15px; }
+
+.divider {
+  text-align: center;
+  color: #c49eac;
+  letter-spacing: 8px;
+  margin: 24px 0;
+}
+
+.footer {
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 21px;
+  color: #a38b9a;
+  margin: 25px 0 5px;
+}
+
+.progress {
+  text-align: center;
+  font-size: 11px;
+  color: #b39e9d;
+  margin: 22px 0 0;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px dashed #c8a8b5;
+  background: #fffdf9;
+  text-align: center;
+  font-size: 21px;
+  letter-spacing: 8px;
+  color: #80677e;
+  outline: none;
+  margin: 15px 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(55,39,55,.68);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  backdrop-filter: blur(5px);
+  animation: fadeIn .3s ease;
+}
+
+.modal-box {
+  background: #fffaf0;
+  border: 2px dashed #d7b7c8;
+  border-radius: 18px;
+  padding: 27px 22px;
+  width: 100%;
+  max-width: 390px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 15px 50px #0003;
+  animation: pop .35s ease;
+}
+
+.modal-title {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  color: #a16f8c;
+  font-size: 23px;
+  margin: 0 0 18px;
+}
+
+.modal-message {
+  white-space: pre-line;
+  line-height: 1.85;
+  color: #594d60;
+  font-size: 14px;
+}
+
+.modal-signature {
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  color: #a16f8c;
+  font-size: 23px;
+}
+
+.modal-close {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 25px;
+  background: #b48eae;
+  color: white;
+  padding: 13px;
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+@keyframes fadeIn { from {opacity:0} to {opacity:1} }
+@keyframes pop {
+  from {opacity:0; transform:scale(.85)}
+  to {opacity:1; transform:scale(1)}
+}
+
+@media(max-width:400px) {
+  .scrapbook { padding: 20px 17px; }
+  h1 { font-size: 31px; }
+}
+</style>
+</head>
+
+<body>
+
+<main class="scrapbook">
+<div class="tape"></div>
+
+<!-- PAGE 1: COVER -->
+<section class="page active" id="p1">
+  <div class="small-label">A tiny scrapbook • made for one person</div>
+  <div class="flower">🌷</div>
+  <div class="center">
+    <span class="sticker">A little something...</span>
+    <h1>For Anurag ♡</h1>
+    <p class="script">Some things are easier to write than say...</p>
+  </div>
+  <div class="polaroid">
+    <div class="polaroid-art">🤍</div>
+    <span>A friendship I value</span>
+  </div>
+  <p class="center">I made these little pages because there's something I really want you to know.</p>
+  <button class="btn" onclick="go(2)">Open my scrapbook ♡</button>
+  <div class="progress">01 / 05</div>
+</section>
+
+<!-- PAGE 2: INTRODUCTION -->
+<section class="page" id="p2">
+  <div class="small-label">A little note before we begin</div>
+  <h2 class="center">Dear Anurag,</h2>
+  <div class="note pink">
+    <p class="handwritten">Please read this with an open heart...</p>
+    I didn't make this to force you to forgive me.
+    I just didn't want to leave important things unsaid.
+  </div>
+  <div class="divider">✿ ✿ ✿</div>
+  <p>Sometimes we hurt people without realising how our actions make them feel. And sometimes, the people whose opinions matter to us are the ones we most wish we hadn't hurt.</p>
+  <p>I want you to know why this friendship means something to me.</p>
+  <button class="btn" onclick="go(3)">Turn the page →</button>
+  <button class="btn outline" onclick="go(1)">← Back</button>
+  <div class="progress">02 / 05</div>
+</section>
+
+<!-- PAGE 3: APPRECIATION -->
+<section class="page" id="p3">
+  <div class="small-label">Things I hope you know</div>
+  <h2 class="center">You inspire me.</h2>
+  <div class="polaroid">
+    <div class="polaroid-art">⭐</div>
+    <span>Always cheering for you</span>
+  </div>
+  <div class="note lilac">
+    <p class="handwritten">I am genuinely happy for you.</p>
+    Your achievements are not things I secretly wish away.
+    I want to see you grow, succeed and experience all the good things you work for.
+  </div>
+  <div class="note pink">
+    You are one of the important people in my life.
+    I respect you, look up to you and consider you an inspiration.
+    I hope you never have to question that.
+  </div>
+  <button class="btn" onclick="go(4)">There's one more thing... →</button>
+  <button class="btn outline" onclick="go(2)">← Back</button>
+  <div class="progress">03 / 05</div>
+</section>
+
+<!-- PAGE 4: APOLOGY LETTER -->
+<section class="page" id="p4">
+  <div class="small-label">The letter I wanted you to read</div>
+  <h2 class="center">I'm sorry. 🤍</h2>
+
+  <div class="letter">
+    <p>Hey Anurag,</p>
+
+    <p>I am genuinely sorry for hurting you and for making you feel that I wasn't happy for you.</p>
+
+    <p>I never wanted you to feel that way. But I also understand that saying I didn't intend to hurt you doesn't erase how my actions made you feel.</p>
+
+    <p>Your happiness genuinely matters to me. I have always seen you as someone I can look up to and learn from. I admire you, and I am proud of the things you achieve.</p>
+
+    <p>You're not just another friend to me. You're one of the people I truly value in my life. I don't want you to question whether I support you or whether I want good things for you.</p>
+
+    <p>If I made you feel that I wasn't celebrating your happiness, I am sorry. You deserved to feel supported, not misunderstood.</p>
+
+    <p>I cannot change what happened, but I can acknowledge it, learn from it and be more thoughtful about how I express myself.</p>
+
+    <p>I am not asking you to pretend that nothing happened. You can take your time. I just hope that one day you'll believe that I genuinely want to see you happy and successful.</p>
+
+    <p>Thank you for being someone who inspires me. I hope our friendship gets past this, because it really does mean a lot to me.</p>
+
+    <p class="handwritten">I'm truly sorry, Anurag. 🤍</p>
+
+    <p style="text-align:right;font-family:'Caveat';font-size:25px">
+      Always wishing you the best,<br>
+      Sulochana ♡
+    </p>
+  </div>
+
+  <button class="btn" onclick="go(5)">One last page →</button>
+  <button class="btn outline" onclick="go(3)">← Back</button>
+  <div class="progress">04 / 05</div>
+</section>
+
+<!-- PAGE 5: FINAL CHOICE -->
+<section class="page" id="p5">
+  <div class="small-label">The last little page</div>
+  <div class="flower">🕊️</div>
+  <h1>Our friendship matters.</h1>
+  <p class="center script">No pressure. Just honesty.</p>
+
+  <div class="note">
+    I don't expect an instant reply or instant forgiveness.
+    I just wanted you to know that I am sorry, that I am proud of you,
+    and that I genuinely wish the best for you.
+  </div>
+
+  <p class="center">Whenever you're ready, I'd love to know how you feel.</p>
+
+  <button class="btn" onclick="answer('yes')">
+    I forgive you ♡
+  </button>
+
+  <button class="btn light" onclick="answer('no')">
+    I need some time
+  </button>
+
+  <div class="divider">✿ ✿ ✿</div>
+  <p class="center handwritten">A little apology, from one friend to another.</p>
+  <div class="footer">Made with sincerity, Sulochana ♡</div>
+  <button class="btn outline" onclick="go(1)">Read it again ↺</button>
+  <div class="progress">05 / 05</div>
+</section>
+
+</main>
+
+<script>
+function go(number) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  document.getElementById('p' + number).classList.add('active');
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function answer(choice) {
+  if (choice === "yes") {
+    showPopup(
+      "AWWWW! 🥹❤️",
+      "Apology accepted!\n\nThank you, Anurag. This genuinely means so much to me. 🤍",
+      "Sulochana is smiling again! 🌷"
+    );
+  } else {
+    showPopup(
+      "WAITTT, ANURAG JI! 😭💔",
+      `You STILL need time?!
+
+Okay... I understand. I'm not going to force you to forgive me. But can I just say one tiny thing before you go?
+
+I genuinely miss the normal, happy version of our friendship. I miss knowing that we're okay. And honestly, it hurts knowing that someone I admire and value so much is upset because of me.
+
+I wish I could rewind things and make you feel how genuinely happy I am for you. I can't, though. All I can do is apologise and try to do better.
+
+BUT EXCUSE ME, SIR... 🥹
+
+You are NOT allowed to forget that you have a friend who genuinely wants to see you succeed, even if she occasionally has the communication skills of a confused potato. 😭😂
+
+Take your time. I'll be here, cheering for you. 🤍
+
+And one day, hopefully, we'll laugh about this silly chapter.`,
+      "With a genuinely sorry heart, Sulochana ♡"
+    );
+  }
+}
+
+function showPopup(title, message, signature) {
+  const overlay = document.createElement("div");
+  overlay.className = "modal-overlay";
+
+  const box = document.createElement("div");
+  box.className = "modal-box";
+
+  const heading = document.createElement("h2");
+  heading.className = "modal-title";
+  heading.textContent = title;
+
+  const body = document.createElement("p");
+  body.className = "modal-message";
+  body.textContent = message;
+
+  const footer = document.createElement("p");
+  footer.className = "modal-signature";
+  footer.textContent = signature;
+
+  const close = document.createElement("button");
+  close.className = "modal-close";
+  close.textContent = "Okay, I understand 🤍";
+  close.onclick = () => overlay.remove();
+
+  box.append(heading, body, footer, close);
+  overlay.appendChild(box);
+
+  overlay.addEventListener("click", event => {
+    if (event.target === overlay) overlay.remove();
+  });
+
+  document.body.appendChild(overlay);
+}
+</script>
+
+</body>
+</html>
